@@ -7,7 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'DataJson\\DataJson' => $baseDir . '/src/config/DataJson.php',
-    'Db\\db' => $baseDir . '/src/config/db.php',
     'FastRoute\\BadRouteException' => $vendorDir . '/nikic/fast-route/src/BadRouteException.php',
     'FastRoute\\DataGenerator' => $vendorDir . '/nikic/fast-route/src/DataGenerator.php',
     'FastRoute\\DataGenerator\\CharCountBased' => $vendorDir . '/nikic/fast-route/src/DataGenerator/CharCountBased.php',
@@ -162,6 +161,6 @@ return array(
     'Symfony\\Component\\VarDumper\\Test\\VarDumperTestTrait' => $vendorDir . '/symfony/var-dumper/Test/VarDumperTestTrait.php',
     'Symfony\\Component\\VarDumper\\VarDumper' => $vendorDir . '/symfony/var-dumper/VarDumper.php',
     'Symfony\\Polyfill\\Mbstring\\Mbstring' => $vendorDir . '/symfony/polyfill-mbstring/Mbstring.php',
-    'User\\User' => $baseDir . '/src/model/User.php',
+    'User\\UserController' => $baseDir . '/src/controller/UserController.php',
     'Validator\\Validator' => $baseDir . '/src/middleware/Validator.php',
 );

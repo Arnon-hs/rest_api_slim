@@ -10,11 +10,14 @@ class DataJson
 		$this->fileName = $_SERVER['DOCUMENT_ROOT'] . '/data/data.json';
 	}
 
+	/**
+	 * get data from json file
+	 */
 	public function getData()
 	{
 		try {
-			$file = file_get_contents($this->fileName);         // Открыть файл data.json
-			return json_decode($file, TRUE);               // Декодировать в массив
+			$file = file_get_contents($this->fileName);
+			return json_decode($file, TRUE);
 		}
 		catch (\Exception $e)//maybe return code
 		{
@@ -22,6 +25,11 @@ class DataJson
 		}
 	}
 
+	/**
+	 * put data to json file
+	 * @param $data
+	 * @return bool|string
+	 */
 	public function putData($data)
 	{
 		try{

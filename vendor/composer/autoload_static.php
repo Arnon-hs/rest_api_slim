@@ -69,7 +69,6 @@ class ComposerStaticInitdd5457f6bc43e5b3b79bb78c86606971
 
     public static $classMap = array (
         'DataJson\\DataJson' => __DIR__ . '/../..' . '/src/config/DataJson.php',
-        'Db\\db' => __DIR__ . '/../..' . '/src/config/db.php',
         'FastRoute\\BadRouteException' => __DIR__ . '/..' . '/nikic/fast-route/src/BadRouteException.php',
         'FastRoute\\DataGenerator' => __DIR__ . '/..' . '/nikic/fast-route/src/DataGenerator.php',
         'FastRoute\\DataGenerator\\CharCountBased' => __DIR__ . '/..' . '/nikic/fast-route/src/DataGenerator/CharCountBased.php',
@@ -224,7 +223,7 @@ class ComposerStaticInitdd5457f6bc43e5b3b79bb78c86606971
         'Symfony\\Component\\VarDumper\\Test\\VarDumperTestTrait' => __DIR__ . '/..' . '/symfony/var-dumper/Test/VarDumperTestTrait.php',
         'Symfony\\Component\\VarDumper\\VarDumper' => __DIR__ . '/..' . '/symfony/var-dumper/VarDumper.php',
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
-        'User\\User' => __DIR__ . '/../..' . '/src/model/User.php',
+        'User\\UserController' => __DIR__ . '/../..' . '/src/controller/UserController.php',
         'Validator\\Validator' => __DIR__ . '/../..' . '/src/middleware/Validator.php',
     );
 

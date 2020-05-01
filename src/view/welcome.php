@@ -11,21 +11,11 @@
 		<title>REST API</title>
 	</head>
 	<body>
-		<div class="container">
-			<h1>Welcome!</h1>
-			<p>Use any link for test my REST API:</p>
-			<ul>
-				<li><a href="/api/users">Show all users</a></li>
-				<li><a href="/api/users/1">Show user with id = 2</a></li>
-				<li><a class="show_popup" rel="popup1">Post some user</a></li>
-				<li><a class="show_popup" rel="popup2">Update some user</a></li>
-				<li><a class="show_popup" rel="popup3">Delete some user</a></li>
-			</ul>
-		</div>
 		<div class="overlay_popup"></div>
 		<div class="popup" id="popup1">
 			<div class="object">
-				<form action= "/api/users/add/" method= "post">
+				<h1>Post a simple user</h1>
+				<form action= "/api/users/add" method="post">
 					<p>Name: </p>
 					<p><input type= "text" name= "first_name"></p>
 					<p>E-mail: </p>
@@ -36,27 +26,38 @@
 				</form>
 			</div>
 		</div>
-		<div class="popup" id="popup2">
-			<div class="object">
-				<form action= "/api/users/update/" method= "put">
-					<p>Name: </p>
-					<p><input type= "text" name= "first_name"></p>
-					<p>E-mail: </p>
-					<p> <input type= "text" name= "email"></p>
-					<p>Phone: </p>
-					<p><input type= "tel" name= "phone"></p>
-					<input type= "submit" value= "Submit">
-				</form>
-			</div>
+		<div class="container">
+			<h1>Welcome!</h1>
+			<p>Use any link for test my REST API:</p>
+			<ul>
+				<li><a href="/api/users">Show all users</a></li>
+				<li><a href="/api/users/1589304540">Show user with id = 1589304540</a></li>
+				<li><a class="show_popup" rel="popup1">Post some user</a></li>
+				<li><a href="https://documenter.getpostman.com/view/11192517/SzmZbL5F">Update some user</a></li>
+				<li><a href="https://documenter.getpostman.com/view/11192517/SzmZbL5F">Delete some user</a></li>
+			</ul>
+			<span>In this project, I implemented a REST API using the PHP-SLIM framework, and also wrote a validation to work correctly. Read and write to json file</span>
+			<p>If you have any questions, please link with me by telegram or email </p>
 		</div>
-		<div class="popup" id="popup3">
-			<div class="object">
-				<form action= "/api/users/delete/" method= "delete">
-					<p>ID: </p>
-					<p><input type= "text" name= "id"></p>
-					<input type= "submit" value= "Submit">
-				</form>
-			</div>
+		<div class="postman">
+			<a href="https://documenter.getpostman.com/view/11192517/SzmZbL5F">
+				<img src="https://banner2.cleanpng.com/20190302/oti/kisspng-application-programming-interface-computer-icons-a-update-native-postman-on-ubuntu-calliditasblog-5c7b404490d035.8226799515515812525932.jpg" alt="Postman">
+			</a>
+		</div>
+		<div class="github">
+			<a href="https://github.com/Arnon-hs/rest_api_slim">
+				<img src="http://pngimg.com/uploads/github/github_PNG40.png" alt="github">
+			</a>
+		</div>
+		<div class="telegram">
+			<a href="https://t.me/razer17">
+				<img src="https://fpadrus.ru/images/icons/soc/Telegram_logo_icon.png" alt="telegram">
+			</a>
+		</div>
+		<div class="email">
+			<a href="mailto:vasya09082001@gmail.com?subject=REST_APIs">
+				<img src="https://img2.freepng.ru/20180421/aqq/kisspng-computer-icons-email-email-vector-5adb31239c4712.9560470515243144036401.jpg" alt="email">
+			</a>
 		</div>
 	</body>
 	<script>
@@ -82,6 +83,12 @@
 			flex-wrap: wrap;
 			max-width: 1170px;
 			margin: 0 auto;
+		}
+		.container span{
+			text-align: center;
+			color: #273849;
+			font-weight: 200;
+			font-size: 1.3em;
 		}
 		h1{
 			font-weight: 300;
@@ -112,7 +119,43 @@
 		.content {
 			text-align: center;
 		}
-
+		.object h1{
+			font-size: 2.5em;
+			text-align: center;
+		}
+		.postman{
+			position: fixed;
+			bottom: 20px;
+			right: 20px;
+			background: #fff;
+		}
+		.postman img, .github img{
+			width: 50px;
+			height: 50px;
+		}
+		.telegram img, .email img{
+			width: 40px;
+			height: 40px;
+			padding: 5px;
+		}
+		.github {
+			position: fixed;
+			bottom: 70px;
+			right: 20px;
+			background: #fff;
+		}
+		.telegram {
+			position: fixed;
+			bottom: 120px;
+			right: 20px;
+			background: #fff;
+		}
+		.email {
+			position: fixed;
+			bottom: 170px;
+			right: 20px;
+			background: #fff;
+		}
 		button {
 			border-radius: 5px;
 			padding: 15px 25px;
@@ -180,7 +223,7 @@
 			display: none;
 			position: relative;
 			z-index: 1000;
-			margin:0 25% 0 25%;
+			margin: 0 auto;
 			width:50%;
 		}
 

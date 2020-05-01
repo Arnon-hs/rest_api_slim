@@ -8,12 +8,10 @@ class Validator
 	private $first_name;
 	private $email;
 	private $phone;
-	public $error;
 	private $data;
 
 	public function  __construct()
 	{
-		$this->error = false;
 		$this->data = new DataJson();
 	}
 
@@ -38,7 +36,7 @@ class Validator
 			return $id;
 	}
 	//todo на поля проверка
-
+	//todo email
 	/**
 	 * @param $email
 	 * @return mixed
@@ -69,12 +67,16 @@ class Validator
 	 */
 	private function validatePhone($phone)
 	{
-		if(!preg_match("/^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/", $phone))
+		if(!preg_match("/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/", $phone))
 			$this->error_message(5);
 		else
 			return $phone;
 	}
 
+	/**
+	 * @param $email
+	 * @return mixed
+	 */
 	private function validateUnique($email)
 	{
 		foreach($this->data->getData() as $key => $node)
@@ -82,43 +84,45 @@ class Validator
 			if(!in_array($email, $node))
 				return $email;
 			else
-				$this->error_message(6);
+				return $this->error_message(6);
 		}
 	}
 
 	/**
 	 * @param $code
-	 * @return string
+	 * @param $error = null
+	 * @return array
 	 */
-	private function error_message($code)
+	private function error_message($code, $error = null) :array
 	{
 		http_response_code(400);
 		switch ($code)
-		{//not exit use todo
+		{
 			case 1 :
-				exit ('{ "error" : "Invalid id! Please check it." } ');
+				$error = ["error" => "Invalid id! Please check it."];
 			break;
 
 			case 2 :
-				exit ('{ "error" : "Invalid request form! Please check it." } ');
+				$error = ["error" => "Invalid request form! Please check it." ];
 			break;
 
 			case 3 :
-				exit('{ "error" : "Invalid email! Please check it." } ');
+				$error = ["error" => "Invalid email! Please check it."];
 			break;
 
 			case 4 :
-				exit('{ "error" : "Invalid name! Please check it." } ');
+				$error = ["error" => "Invalid name! Please check it."];
 			break;
 
 			case 5 :
-				exit('{ "error" : "Invalid phone! Please check it." } ');
+				$error = ["error" => "Invalid phone! Please check it."];
 			break;
 
 			case 6 :
-				exit('{ "error" : "Email is not unique! Please check it." } ');
+				$error = ["error" => "Email is not unique! Please check it."];
 			break;
 		}
+		return $error;
 	}
 
 }

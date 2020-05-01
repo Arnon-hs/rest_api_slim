@@ -1,0 +1,15 @@
+{
+    "require": {
+        "slim/slim": "^3.12"
+    },
+    "autoload": {
+        "classmap": [
+            "src/model/User.php",
+            "src/config/DataJson.php",
+            "src/middleware/Validator.php"
+        ]
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^5.0"
+    }
+}

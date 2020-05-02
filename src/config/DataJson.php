@@ -15,13 +15,14 @@ class DataJson
 	 */
 	public function getData()
 	{
-		try {
+		try
+		{
 			$file = file_get_contents($this->fileName);
 			return json_decode($file, TRUE);
 		}
 		catch (\Exception $e)//maybe return code
 		{
-			return json_decode('Error with read a file: '. $e);//todo json
+			return json_encode(["Error"=>'Error with read a file: '. $e->getMessage()]);
 		}
 	}
 
@@ -32,13 +33,14 @@ class DataJson
 	 */
 	public function putData($data)
 	{
-		try{
+		try
+		{
 			file_put_contents($this->fileName, json_encode($data));
 			return true;
 		}
 		catch (\Exception $e)
 		{
-			return 'Error with write to file: '. $e;
+			return json_encode(["Error" => 'Error with write to file: '. $e->getMessage()]);
 		}
 	}
 

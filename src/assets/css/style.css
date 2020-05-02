@@ -1,5 +1,6 @@
 body{
 	font-family: "Source Sans Pro", sans-serif;
+	min-width: 320px;
 }
 .container{
 	display: flex;
@@ -10,17 +11,160 @@ body{
 	max-width: 1170px;
 	margin: 0 auto;
 }
+.container span{
+	text-align: center;
+	color: #273849;
+	font-weight: 200;
+	font-size: 1.3em;
+}
 h1{
 	font-weight: 300;
-	font-size: 3.2em;
+	font-size: 4em;
 	color: #273849;
 }
 p{
 	color: #42b983;
 	font-size: 1.5em;
 	font-weight: 400;
+	margin: 10px;
+}
+ul{
+	padding-left: 0;
 }
 ul li{
-	font-size: 1em;
+	list-style: none;
+	font-size: 1.3em;
+	font-weight: 600;
 	color: #273849;
+	text-align: center;
+}
+a{
+	cursor: pointer;
+	color: #273849;
+}
+a:visited{
+	color: inherit;
+	text-decoration: mediumseagreen;
+}
+s{
+	text-decoration-color: #42b983;
+}
+.powered{
+	position: fixed;
+	bottom: 20px;
+	left: 20px;
+	background: #fff;
+}
+.content {
+	text-align: center;
+}
+.object h1{
+	font-size: 2.5em;
+	text-align: center;
+}
+.postman{
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	background: #fff;
+}
+.postman img, .github img{
+	width: 50px;
+	height: 50px;
+}
+.telegram img, .email img{
+	width: 40px;
+	height: 40px;
+	padding: 5px;
+}
+.github {
+	position: fixed;
+	bottom: 70px;
+	right: 20px;
+	background: #fff;
+}
+.telegram {
+	position: fixed;
+	bottom: 120px;
+	right: 20px;
+	background: #fff;
+}
+.email {
+	position: fixed;
+	bottom: 170px;
+	right: 20px;
+	background: #fff;
+}
+button {
+	border-radius: 5px;
+	padding: 15px 25px;
+	font-size: 22px;
+	text-decoration: none;
+	margin: 20px;
+	color: #fff;
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	border: 0;
+}
+
+button:active {
+	transform: translate(0px, 5px);
+	-webkit-transform: translate(0px, 5px);
+	box-shadow: 0px 1px 0px 0px;
+}
+
+button:focus {
+	outline: none !important
+}
+
+input {
+	color: #494949;
+	border: 1px solid #e3e3e3;
+	border-radius: 3px;
+	background: #fff;
+	font-size: 14px;
+	margin: 0 0 10px;
+	padding: 5px;
+	width: 100%;
+	font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	line-height: 1.5;
+}
+
+input:focus {
+	border-color: #808080;
+	outline: none;
+}
+
+textarea:focus {
+	border-color: #808080;
+	outline: none;
+}
+
+.overlay_popup {
+	display:none;
+	position:fixed;
+	z-index: 999;
+	top:0;
+	right:0;
+	left:0;
+	bottom:0;
+	background:#000;
+	opacity:0.5;
+}
+
+.popup {
+	display: flex;
+	position: relative;
+	z-index: 1000;
+	margin: 0 auto;
+	width:50%;
+	justify-content: center;
+}
+
+.object{
+	width: 500px;
+	height: 500px;
+	background-color: #eee;
+	padding: 50px 70px;
 }

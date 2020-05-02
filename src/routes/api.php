@@ -2,18 +2,17 @@
 
 use \Psr\Http\Message\ResponseInterface as Response;
 use \Psr\Http\Message\ServerRequestInterface as Request;
-use User\UserController;
+use User\User;
 
-//dev
-$configuration = [
-	'settings' => [
-		'displayErrorDetails' => true,
-	],
-];
-$c = new \Slim\Container($configuration);
-//dev
+//$configuration = [
+//	'settings' => [
+//		'displayErrorDetails' => true,
+//	],
+//];
+//$c = new \Slim\Container($configuration);
 
-$app = new \Slim\App($c);
+
+$app = new \Slim\App();
 
 $app->get('/', function () {
     require_once $_SERVER['DOCUMENT_ROOT']. "/src/view/welcome.php";
@@ -22,13 +21,11 @@ $app->get('/', function () {
 //get all users
 $app->get('/api/users', function (Request $request, Response $response) {
 
-    $users = new UserController();
+    $users = new User();
 	$result = $users->all();
 
 	if($result)
 		return $response->withJson($result, 200);
-	else
-		return $response->withJson($result, 400);
 });
 
 
@@ -36,13 +33,12 @@ $app->get('/api/users', function (Request $request, Response $response) {
 $app->get('/api/users/{id}', function (Request $request, Response $response, array $args) {
 
     $id = $request->getAttribute('id');
-    $user = new UserController();
+
+    $user = new User();
     $result = $user->get($id);
 
 	if($result)
 		return $response->withJson($result, 200);
-	else
-		return $response->withJson($result, 400);
 });
 
 
@@ -53,13 +49,11 @@ $app->post('/api/users/add', function (Request $request, Response $response) {
     $data['phone'] = $request->getParam('phone');
     $data['email'] = $request->getParam('email');
 
-    $user = new UserController();
+    $user = new User();
     $result = $user->post($data);
 
 	if($result)
 		return $response->withJson($result, 201);
-	else
-		return $response->withJson($result, 400);
 });
 
 //make a put request
@@ -70,13 +64,11 @@ $app->put('/api/users/update/{id}', function (Request $request, Response $respon
 	$data['phone'] = $request->getParam('phone');
 	$data['email'] = $request->getParam('email');
 
-	$user = new UserController();
+	$user = new User();
 	$result = $user->put($data);
 
 	if($result)
 		return $response->withJson($result, 202);
-	else
-		return $response->withJson($result, 400);
 });
 
 
@@ -85,13 +77,11 @@ $app->delete('/api/users/delete/{id}', function (Request $request, Response $res
 
     $id = $request->getAttribute('id');
 
-	$user = new UserController();
+	$user = new User();
 	$result = $user->delete($id);
 
 	if($result)
 		return $response->withJson($result, 410);
-	else
-		return $response->withJson($result, 400);
 });
  
 $app->run();

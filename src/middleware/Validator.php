@@ -5,16 +5,20 @@ use DataJson\DataJson;
 
 class Validator
 {
-	private $first_name;
-	private $email;
-	private $phone;
 	private $data;
 
+	/**
+	 * Validator constructor.
+	 */
 	public function  __construct()
 	{
 		$this->data = new DataJson();
 	}
 
+	/**
+	 * @param $data
+	 * @return mixed
+	 */
 	public function validate($data)
 	{
 		$this->validateEmail($data['email']);
@@ -35,8 +39,6 @@ class Validator
 		else
 			return $id;
 	}
-	//todo на поля проверка
-	//todo email
 	/**
 	 * @param $email
 	 * @return mixed
@@ -67,7 +69,7 @@ class Validator
 	 */
 	private function validatePhone($phone)
 	{
-		if(!preg_match("/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/", $phone))
+		if(!preg_match("/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/", $phone) || strlen($phone) > 15)
 			$this->error_message(5);
 		else
 			return $phone;
@@ -79,23 +81,22 @@ class Validator
 	 */
 	private function validateUnique($email)
 	{
-		foreach($this->data->getData() as $key => $node)
+		$data = $this->data->getData();
+		foreach($data as $key => $node)
 		{
 			if(!in_array($email, $node))
 				return $email;
 			else
-				return $this->error_message(6);
+				$this->error_message(6);
 		}
 	}
 
 	/**
 	 * @param $code
 	 * @param $error = null
-	 * @return array
 	 */
-	private function error_message($code, $error = null) :array
+	private function error_message($code, $error = null)
 	{
-		http_response_code(400);
 		switch ($code)
 		{
 			case 1 :
@@ -122,7 +123,10 @@ class Validator
 				$error = ["error" => "Email is not unique! Please check it."];
 			break;
 		}
-		return $error;
+
+		header("Content-type: application/json; charset=utf-8");
+		http_response_code(400);
+		exit(json_encode($error));
 	}
 
 }

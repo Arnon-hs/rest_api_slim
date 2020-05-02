@@ -4,7 +4,7 @@
     },
     "autoload": {
         "classmap": [
-            "src/controller/UserController.php",
+            "src/controller/User.php",
             "src/config/DataJson.php",
             "src/middleware/Validator.php"
         ]

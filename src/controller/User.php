@@ -4,13 +4,13 @@ namespace User;
 use DataJson\DataJson;
 use Validator\Validator;
 
-class UserController
+class User
 {
     private $data;
 	private $validator;
 
 	/**
-	 * UserController constructor.
+	 * User constructor.
 	 */
     public function __construct()
     {
@@ -36,16 +36,18 @@ class UserController
 	   {
 	   		$id = $this->validator->validateId($id);
 			$data = $this->data->getData();
+
 			foreach($data as $key => $node)
 			{
 				if(in_array($id, $node))
 					return $node;
 			}
+
 			return ['Error' => 'User not found!'];
 	   }
 	   catch (\Exception $e)
 	   {
-		   return ["Error" => $e];
+		   return ["Error" => $e->getMessage()];
 	   }
     }
 
@@ -61,12 +63,13 @@ class UserController
 			$data = $this->data->getData();
 			$user['id'] = random_int(100000, 999999) + time();
 			$data[] = $user;
+
 			if($this->data->putData($data))
 				return ["Success" => "User added!"];
 		}
 		catch (\Exception $e)
 		{
-			return ["Error" => $e];
+			return ["Error" => $e->getMessage()];
 		}
 	}
 
@@ -78,8 +81,10 @@ class UserController
     {
 		try
 		{
+			$user['id'] = $this->validator->validateId($user['id']);
 			$user = $this->validator->validate($user);
 			$data = $this->data->getData();
+
 			foreach ($data as $key => $node)
 			{
 				if($node["id"] == $user["id"])
@@ -92,11 +97,12 @@ class UserController
 						return ["Error" => "Error with update user!"];
 				}
 			}
+
 			return ["Error" => "User not found!"];
 		}
 		catch (\Exception $e)
 		{
-			return ["Error" => $e];
+			return ["Error" => $e->getMessage()];
 		}
     }
 
@@ -108,7 +114,9 @@ class UserController
     {
 		try
 		{
+			$id = $this->validator->validateId($id);
 			$data = $this->data->getData();
+
 			foreach ($data as $key => $node)
 			{
 				if(in_array($id, $node))
@@ -121,11 +129,12 @@ class UserController
 						return ["Error" => "Error with delete user!"];
 				}
 			}
+
 			return ["Error" => "Error with delete user - Not found!"];
 		}
 		catch (\Exception $e)
 		{
-			return ["Error" => $e];
+			return ["Error" => $e->getMessage()];
 		}
     }
 }

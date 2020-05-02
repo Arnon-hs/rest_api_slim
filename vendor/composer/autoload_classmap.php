@@ -161,6 +161,6 @@ return array(
     'Symfony\\Component\\VarDumper\\Test\\VarDumperTestTrait' => $vendorDir . '/symfony/var-dumper/Test/VarDumperTestTrait.php',
     'Symfony\\Component\\VarDumper\\VarDumper' => $vendorDir . '/symfony/var-dumper/VarDumper.php',
     'Symfony\\Polyfill\\Mbstring\\Mbstring' => $vendorDir . '/symfony/polyfill-mbstring/Mbstring.php',
-    'User\\UserController' => $baseDir . '/src/controller/UserController.php',
+    'User\\User' => $baseDir . '/src/controller/User.php',
     'Validator\\Validator' => $baseDir . '/src/middleware/Validator.php',
 );
